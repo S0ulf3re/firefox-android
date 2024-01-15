@@ -42,6 +42,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import mozilla.appservices.places.BookmarkRoot
 import mozilla.appservices.places.uniffi.PlacesApiException
+import mozilla.components.browser.menu.view.MenuButton
 import mozilla.components.browser.state.action.ContentAction
 import mozilla.components.browser.state.selector.findCustomTab
 import mozilla.components.browser.state.selector.findCustomTabOrSelectedTab
@@ -453,6 +454,9 @@ abstract class BaseBrowserFragment :
                 context = context,
                 container = binding.browserLayout,
                 androidToolbarView = toolbarView,
+                menuButton = MenuButton(requireContext()).apply {
+                    menuBuilder = browserToolbarView.menuToolbar.menuBuilder
+                },
             )
         }
 
